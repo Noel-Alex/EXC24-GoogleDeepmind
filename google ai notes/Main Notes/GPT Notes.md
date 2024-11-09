@@ -36,6 +36,7 @@ The idea of [transformers](Terms#Transformers) were first introduced in Google's
     - **Softmax Normalization:** Scores are normalized, and each token’s value vector is weighted based on these normalized scores.
     - **Multi-Head Attention:** Multiple sets of query-key-value operations (heads) allow the model to capture different aspects of relationships within the data.
 - **Example:** In the sentence “The cat sat on the mat,” the self-attention mechanism allows the model to focus on relationships, like "cat" being related to "sat" more than "mat."
+[In depth about Attention](More%20on%20Transformers#More%20on%20Attention)
 
 ### **5. Applying Feedforward Layers**
 

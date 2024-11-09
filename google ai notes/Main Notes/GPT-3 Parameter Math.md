@@ -111,5 +111,53 @@ d_embed(12,288) * n_neurons(49,152) * n_layers(96) = 57,982,058,496
 n_vocab(50,257) * d_embed(12,288) = 617,558,016
 
 
+**Total Parameter Count of GPT-3** = 
 
+
+
+
+# Ram usage with LLMs
+To estimate the amount of RAM needed to run a Large Language Model (LLM) given the number of parameters, you can use the following method, which considers the memory required to store the model’s parameters, activations, gradients (if training), and optimizer states. Here’s a breakdown of the approach:
+
+### Step 1: Calculate Memory Required for Parameters
+
+Each parameter typically requires 4 bytes (32-bit floating-point precision, commonly used for inference). You can calculate the memory needed to store the parameters by:
+
+Parameter Memory (GB)=Parameter Count×4 bytes10243\text{Parameter Memory (GB)} = \frac{\text{Parameter Count} \times 4 \text{ bytes}}{1024^3}Parameter Memory (GB)=10243Parameter Count×4 bytes​
+
+For example, a 175-billion parameter model (like GPT-3) would need:
+
+175,000,000,000×4 bytes≈700 GB175,000,000,000 \times 4 \text{ bytes} \approx 700 \text{ GB}175,000,000,000×4 bytes≈700 GB
+
+### Step 2: Estimate Additional Memory for Running the Model
+
+In addition to storing the parameters, the model requires memory for:
+
+- **Activations**: Intermediate computations stored for backpropagation or across layers. Generally, the size of activations is a function of the batch size, sequence length, and hidden layer size.
+- **Gradients (if training)**: Requires storage for gradients of the parameters, approximately equal to the parameter size if gradients are saved for all parameters.
+- **Optimizer states (if training)**: Modern optimizers (e.g., Adam) store additional states per parameter, such as running averages, adding roughly 2-3 times the memory used for parameters.
+
+### Approximate RAM Requirements for Inference vs. Training
+
+For **inference only**, memory requirements include:
+
+- **Parameter memory**
+- **Activation memory** (depends on sequence length and batch size)
+
+For **training**, memory requirements increase due to:
+
+- **Gradients** (additional parameter memory)
+- **Optimizer states** (roughly 2-3x parameter memory)
+
+### Practical Estimate for Inference on a 175-Billion Parameter Model (e.g., GPT-3)
+
+1. **Parameter Memory**: ~700 GB
+2. **Activations (approximate)**: Varies but can be significant. For long sequence lengths, add roughly 50-100% of parameter memory as a rough estimate.
+
+For inference, this brings **total RAM requirements** close to **700-1000 GB**. For training, you would need 3-4x this amount due to gradients and optimizer states, totaling approximately **2-3 TB** RAM, depending on the model's architecture and hyperparameters.
+
+
+# Context size
+has a fixed context size of 2048x12,288 
+Take the last column from your context matrix and then multiply it by the unembeding matrix, apply softmax to get the probability distribution of every possible token that can follow it.
 # References
