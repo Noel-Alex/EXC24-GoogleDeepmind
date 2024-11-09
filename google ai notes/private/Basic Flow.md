@@ -11,3 +11,11 @@ Start Explaining the Transformer models
  - Explain Embedding vectors and vector databses in short
  - count the parameters in GPT-3 using [[GPT-3 Parameter Math]]
  - Explanation of context sized that it's trained with, GPT-3 has a fixed context size of 2024
+ - some insights on the attention mechanism
+ - move onto memory in mlps
+ - optimisations and general info on usage of LLMs [[Running and Using LLMS with Code]]  -- [[Optimizing LLMs]] 
+Start [[AlphaFold]]
+
+- [[Protein_Folding]] 
+- [[AlphaFold Notes]]
+- [[AlphaFold Architecture]]
